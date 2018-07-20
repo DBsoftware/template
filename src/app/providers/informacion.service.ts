@@ -5,16 +5,29 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class InformacionService {
-  info: any = {};
-  loading = false;
+  infoShared: any = {};
+  infoAbout: any = [];
+  loadingShared = false;
+  loadingAbout = false;
   constructor(private http: HttpClient) {
-    this.info = this.http.get('assets/data/info.pagina.json')
+    this.loadDataShared();
+    this.loadDataAbout();
+  }
+  loadDataShared() {
+    this.http.get('assets/data/info.pagina.json')
                 .subscribe(data => {
-                  this.loading = true;
-                  this.info = data;
+                  this.loadingShared = true;
+                  this.infoShared = data;
                 });
   }
 
+  loadDataAbout() {
+    this.http.get('https://modelo-3e11c.firebaseio.com/Nosotros.json')
+    .subscribe(data => {
+      this.loadingAbout = true;
+      this.infoAbout = data;
+    });
+  }
 
 
 }

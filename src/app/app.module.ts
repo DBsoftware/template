@@ -8,10 +8,12 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './pages/home/home.module';
 import { AboutModule } from './pages/about/about.module';
 import { AppRoutingModule } from './app-routes';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
